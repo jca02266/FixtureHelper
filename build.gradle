@@ -1,0 +1,27 @@
+apply plugin: 'java'
+
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    springVersion = '4.0.6.RELEASE'
+}
+
+dependencies {
+    compile "org.springframework:spring-beans:$springVersion"
+    compile "org.springframework:spring-context:$springVersion"
+    compile "org.springframework:spring-context-support:$springVersion"
+    compile "org.springframework:spring-tx:$springVersion"
+    compile "org.springframework:spring-jdbc:$springVersion"
+
+    compile 'org.apache.derby:derby:10.+'
+    compile "org.projectlombok:lombok:1.+"
+
+    testCompile 'junit:junit:4.+'
+    testCompile "org.springframework:spring-test:$springVersion"
+    testCompile "net.sf.opencsv:opencsv:2.+"
+}
