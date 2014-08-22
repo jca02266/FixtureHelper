@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -106,6 +107,11 @@ public class FixtureHelper {
 
         executeScript(sqlCreateScript);
 
+        if (!sqlInsertScript.exists()) {
+            // generate a SQL insert statement from bean
+            String sqlString = SQLBuilder.buildInsert(tableName, beans.get(0));
+            sqlInsertScript = new ByteArrayResource(sqlString.getBytes());
+        }
         insert(sqlInsertScript, beans);
     }
 
