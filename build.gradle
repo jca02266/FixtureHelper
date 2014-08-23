@@ -23,5 +23,13 @@ dependencies {
 
     testCompile 'junit:junit:4.+'
     testCompile "org.springframework:spring-test:$springVersion"
-    testCompile "net.sf.opencsv:opencsv:2.+"
+
+    // If you have Git. Try `git submodule update`
+    compile project(':opencsv')
+
+    // If you use normal opencsv uncomment below.
+    // testCompile "net.sf.opencsv:opencsv:2.+"
+
+    // If you have opencsv.jar, uncomment below and put it in the libs directory.
+    // compile fileTree(dir: 'libs', include: '*.jar')
 }
